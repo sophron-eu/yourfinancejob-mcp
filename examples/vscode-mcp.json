@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "jobs": {
+      "type": "http",
+      "url": "https://mcp.yourfinancejob.com/mcp"
+    }
+  }
+}
