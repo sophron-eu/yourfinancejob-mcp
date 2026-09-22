@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "websiteUrl": "https://yourfinancejob.com/mcp",
   "repository": {
-    "url": "https://github.com/amsterdaminvest/yourfinancejob-mcp",
+    "url": "https://github.com/sophron-eu/yourfinancejob-mcp",
     "source": "github"
   },
   "remotes": [
