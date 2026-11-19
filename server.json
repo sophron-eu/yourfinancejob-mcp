@@ -3,8 +3,42 @@
   "name": "com.yourfinancejob/job-tracker",
   "title": "Your Finance Job: finance job board and application tracker",
   "description": "Job board and application tracker for finance, trading and quant careers. 47 tools, free.",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "websiteUrl": "https://yourfinancejob.com/mcp",
+  "icons": [
+    {
+      "src": "https://mcp.yourfinancejob.com/icon-light-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ],
+      "theme": "light"
+    },
+    {
+      "src": "https://mcp.yourfinancejob.com/icon-light-256.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "256x256"
+      ],
+      "theme": "light"
+    },
+    {
+      "src": "https://mcp.yourfinancejob.com/icon-dark-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ],
+      "theme": "dark"
+    },
+    {
+      "src": "https://mcp.yourfinancejob.com/icon-dark-256.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "256x256"
+      ],
+      "theme": "dark"
+    }
+  ],
   "repository": {
     "url": "https://github.com/sophron-eu/yourfinancejob-mcp",
     "source": "github"
