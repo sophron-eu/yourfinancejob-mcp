@@ -1,7 +1,9 @@
 # Your Finance Job MCP server
 
+[![mcptry](https://mcptry.com/badge/com.yourfinancejob/job-tracker)](https://mcptry.com/servers/com.yourfinancejob/job-tracker)
+
 **A job tracker MCP server and job board MCP server for finance careers.** One URL turns a
-finance, trading and quant job board, plus your own application pipeline, into 24 tools that
+finance, trading and quant job board, plus your own application pipeline, into 41 tools that
 Claude, ChatGPT, Claude Code, Cursor or VS Code can use.
 
 Hosted and free. No API key, no Docker, no `npx`, nothing to self-host. You paste one URL into
@@ -22,22 +24,26 @@ Most job search MCP servers do one of two things: they wrap a search API, or the
 database you have to host. This one is a career MCP server that does both halves, and stays in
 one field:
 
-- **A board.** Around 7,400 open roles at 451 firms in finance, trading, quant, technology and
-  consulting, rebuilt daily. Levels run from summer internships and off-cycle internships through
-  graduate programmes to entry level. Every role links to the firm's own posting, which is where
-  you apply. Nothing here is a copy of a job page, and nothing is auto-applied on your behalf.
-- **A tracker.** Stars, application stages, lists, notes, reminders, watches and email settings
-  live against your account. Your assistant and the website read and write the same records, so
-  closing the chat does not lose anything.
+- **A board.** More than 14,000 open roles at over 1,000 firms in finance, trading, quant,
+  technology and consulting, rebuilt every morning, with 41 ready-made lists, 49 city pages and
+  19 kinds of firm to search by. Levels run from summer internships and off-cycle
+  internships through graduate programmes to entry level. Every role links to the firm's own
+  posting, which is where you apply. Nothing here is a copy of a job page, and nothing is
+  auto-applied on your behalf.
+- **A tracker.** Stars, application stages, lists, notes, reminders, watches, followed firms,
+  saved lists and cities, saved filters, your CVs and cover letters, your networking contacts
+  and email settings live against your account. Your
+  assistant and the website read and write the same records, so closing the chat does not lose
+  anything.
 
 | | |
 |---|---|
 | Type | Remote MCP server, hosted |
 | Transport | `streamable-http` |
 | Authentication | OAuth 2.1, dynamic client registration, PKCE |
-| Tools | 24 |
-| Prompts | 6 |
-| Resources | 3 |
+| Tools | 41 |
+| Prompts | 9 |
+| Resources | 5 |
 | Price | Free, no paid tier |
 | API key | None issued or needed |
 | Rate limit | 60 calls per minute, per member |
@@ -61,7 +67,7 @@ every Claude plan; the Free plan allows one.
 claude mcp add --transport http --scope user jobs https://mcp.yourfinancejob.com/mcp
 ```
 
-Then `/mcp` → `jobs` → **Authenticate**. The six briefs become slash commands
+Then `/mcp` → `jobs` → **Authenticate**. The seven briefs become slash commands
 (`/jobs:weekly_digest`, `/jobs:firm_brief Optiver`, and so on).
 
 ### Cursor
@@ -111,22 +117,42 @@ the Cursor example above.
 
 | Tool | What it does |
 |---|---|
-| `search_jobs` | Open roles by words, firm, city, country, role type, level and date. Filters combine. |
-| `latest_jobs` | What appeared most recently. |
-| `get_job` | One role in full, with the link to the firm's own posting. |
-| `list_companies` | Every firm covered, with its open count. |
-| `list_events` | Firm-hosted insight days, spring weeks and career events. |
+| `search_jobs` | Open roles by words, firm, city, country, kind of firm, ready-made list, role type, level, workplace (remote, hybrid, on site) and date, sorted as you like. Filters combine. |
+| `latest_jobs` | What appeared most recently, with the same scopes. |
+| `get_job` | One role in full: the description, and the closing date, pay range, employment and workplace type, offices and departments where the firm declared them. |
+| `list_companies` | Firms with their kinds and open counts, by kind, country or city; `include_quiet` adds every watched firm with nothing open today. |
+| `list_events` | Insight days, spring weeks, academies, hackathons and career events worldwide, with the professional conferences that take students on request. |
+| `market_stats` | Who is hiring: new roles in the last days versus the window before, the firms posting most, rising firms, and the mix by level, role type, country and city. |
+| `browse_lists` | The 41 ready-made lists with live counts, and the 19 kinds of firm. |
+| `list_cities` | The 49 city pages: open roles, hiring firms, busiest firms, upcoming events. |
 
 ### Your pipeline
 
 | Tool | What it does |
 |---|---|
-| `my_roles` | What you starred, each application's stage, and your lists. |
-| `save_role` | Star a role. |
-| `set_stage` | `Not Applied`, `Applying`, `Applied`, `Interviewing`, `Final Round`, `Offer`, `Rejected`. |
+| `my_roles` | Everything on your account: stars, stages, lists, notes, reminders, watches, saved lists and cities, followed firms, saved filters, hidden. |
+| `my_profile` | Your own background: what was extracted from the CV you uploaded (university, study, skills, languages, ventures) plus the details you wrote yourself (target roles, right to work, strengths, how drafts should sound). Only returned when you allow assistant access under Profile on your account page. Read only, and never the file itself. |
+| `update_profile` | Read or edit the "About you" details on your account page (target roles, right to work, strengths, how drafts should sound, links) and the "Sophron® may contact me about opportunities" switch. Editing needs assistant access to be on; that access, and uploading a CV, are only done by you on the site. |
+| `best_fits` | A ranked shortlist of open roles that fit you, each with a fit score and the reasons (role type, level, place, followed firm, skills), from your filters, saved roles and, with your permission, your profile. |
+| `track_outside_role` | Track a role that is not on the board from its posting link; it then takes stages, notes and reminders like any other and shows in your pipeline. |
+| `save_role` | Star a role, or up to fifty at once. |
+| `set_stage` | `Not Applied`, `Applying`, `Applied`, `Interviewing`, `Final Round`, `Offer`, `Rejected`; one role or many; `clear` removes the stage. |
 | `add_note` | A note on a role. |
+| `untrack_role` | Take a role off your overview: star, stage, note, reminders and list memberships in one go. |
 | `manage_list` | Your own buckets of roles: create, add, remove, rename, delete. |
-| `my_events` | The career events you saved. |
+| `save_list` | Keep a ready-made list or a city page on your account, the star on `/lists` and `/cities`. |
+| `follow_company` | Follow a firm: new roles there ride in your email. |
+| `my_events` / `save_event` | The career events you saved, and starring one. |
+| `saved_filters` | The filter set the board and the events page open with. |
+
+### CVs, cover letters and your network
+
+| Tool | What it does |
+|---|---|
+| `my_documents` | The CVs and cover letters you keep under Tools on the site: the list, or one in full, so your assistant can improve it, tailor it to another role or write a letter in the same voice. |
+| `save_document` | Save a new one-page CV or cover letter into your Tools, where you edit it and download the PDF. Built only from your profile and what you said; gaps get a `[placeholder]`, never an invented fact. It never overwrites an existing document. |
+| `my_network` | Your networking tracker: people you know or want to meet, their stage, last contact dates, replies you owe, coffee chats with notes, and the next follow-up. |
+| `update_network` | Add a person or change one: stage, notes, a planned chat, a follow-up date, or log a chat that happened. A follow-up date also lands in your morning email. |
 
 ### Reminders and watches
 
@@ -146,22 +172,32 @@ the Cursor example above.
 | `report_role` | Flag a dead link or a closed role. |
 | `notification_settings` | On or off, daily or weekly, the hour, the timezone. |
 | `career_alerts` | New roles matching your category, level and region filters. |
+| `my_usage` | How many calls you made today, and the ceiling. |
 
 ### Briefs
 
-`get_brief(kind, ...)` returns one of six ready-made answers, each pulling its own data server
-side so a digest costs one call: `weekly_digest`, `firm_brief`, `application_plan`,
-`deadline_calendar`, `compare_roles`, `prep_checklist`. The same six are published as MCP prompts
-for clients that surface them.
+`get_brief(kind, ...)` returns one of nine ready-made answers, each pulling its own data server
+side so a digest costs one call: `weekly_digest`, `firm_brief`, `city_brief`, `list_brief`,
+`application_plan`, `deadline_calendar`, `compare_roles`, `prep_checklist`, `application_draft`.
+The same nine are published as MCP prompts for clients that surface them. The plan and the
+calendar read your own roles' published closing dates.
+
+`application_draft` joins a posting to your own CV profile and writes a motivation letter, the
+usual application answers, and an honest list of what the role asks for that your CV does not
+show. It drafts; you edit it and send it yourself. Nothing here submits anything to a firm.
 
 ### Resources
 
 `sophron://me/pipeline` · `sophron://tracker/stats` · `sophron://firms` (and
-`sophron://firms/<name>`)
+`sophron://firms/<name>`) · `sophron://lists` (and `sophron://lists/<slug>`) · `sophron://cities`
+(and `sophron://cities/<slug>`)
 
 ## Things to ask it
 
 - "What quant internships opened in Amsterdam this week?"
+- "Which hedge funds are hiring in London, and what is open there?"
+- "Follow Optiver and IMC, and save the Amsterdam city page."
+- "Brief me on Zurich as a place to start."
 - "Star the Jane Street graduate roles and set them to Applying."
 - "What is open at Optiver, and where do I stand with them?"
 - "Remind me about the Morgan Stanley deadline on 14 October."

@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.yourfinancejob/job-tracker",
   "title": "Your Finance Job: finance job board and application tracker",
-  "description": "Job board and application tracker for finance, trading and quant careers. 24 tools, free.",
-  "version": "1.0.0",
+  "description": "Job board and application tracker for finance, trading and quant careers. 41 tools, free.",
+  "version": "1.5.0",
   "websiteUrl": "https://yourfinancejob.com/mcp",
   "repository": {
     "url": "https://github.com/sophron-eu/yourfinancejob-mcp",
