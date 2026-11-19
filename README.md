@@ -3,7 +3,7 @@
 [![mcptry](https://mcptry.com/badge/com.yourfinancejob/job-tracker)](https://mcptry.com/servers/com.yourfinancejob/job-tracker)
 
 **A job tracker MCP server and job board MCP server for finance careers.** One URL turns a
-finance, trading and quant job board, plus your own application pipeline, into 41 tools that
+finance, trading and quant job board, plus your own application pipeline, into 47 tools that
 Claude, ChatGPT, Claude Code, Cursor or VS Code can use.
 
 Hosted and free. No API key, no Docker, no `npx`, nothing to self-host. You paste one URL into
@@ -41,8 +41,8 @@ one field:
 | Type | Remote MCP server, hosted |
 | Transport | `streamable-http` |
 | Authentication | OAuth 2.1, dynamic client registration, PKCE |
-| Tools | 41 |
-| Prompts | 9 |
+| Tools | 47 |
+| Prompts | 10 |
 | Resources | 5 |
 | Price | Free, no paid tier |
 | API key | None issued or needed |
@@ -50,6 +50,11 @@ one field:
 | Token lifetime | 30 days |
 
 ## Install
+
+Want to try it first? The public board needs no account and no sign-in:
+`https://mcp.yourfinancejob.com/board` gives the eight board tools (search, newest roles, role
+details, who is hiring, firms, events, lists, cities), 30 calls a minute. Everything below that
+touches your own records uses the main URL and a free account.
 
 You need a free [Your Finance Job](https://yourfinancejob.com/join) account with a verified
 email. There is no key to generate: the server registers your client automatically and sends you
@@ -153,6 +158,25 @@ the Cursor example above.
 | `save_document` | Save a new one-page CV or cover letter into your Tools, where you edit it and download the PDF. Built only from your profile and what you said; gaps get a `[placeholder]`, never an invented fact. It never overwrites an existing document. |
 | `my_network` | Your networking tracker: people you know or want to meet, their stage, last contact dates, replies you owe, coffee chats with notes, and the next follow-up. |
 | `update_network` | Add a person or change one: stage, notes, a planned chat, a follow-up date, or log a chat that happened. A follow-up date also lands in your morning email. |
+
+### LinkedIn outreach
+
+Your own outreach lists on top of the same network: named groups of people (say "Traders at
+Amsterdam prop shops") with a goal, message templates and a count per stage, from to contact
+through request sent, connected and messaged to a coffee chat. Your assistant drafts every
+message; you send it yourself from your own LinkedIn.
+
+| Tool | What it does |
+|---|---|
+| `my_outreach` | Your outreach lists with a count per stage, or one list with its templates and people. |
+| `save_outreach_list` | Create a list, change its title, goal or templates (`{first}`, `{name}`, `{firm}`, `{role}`, `{me}`), or delete it; its people stay in your network. |
+| `add_to_outreach` | Add up to 50 people at once (name, firm, position, LinkedIn link), or put people already in your network on a list. Nobody is duplicated. |
+| `next_outreach` | The next person on a list for a one-by-one run, with the list's templates filled in for them. |
+| `mark_outreach` | Record what you sent for one person or fifty: the stage, the message, a dated note, a follow-up date. |
+| `sync_linkedin` | Paste your LinkedIn Connections or Sent invitations page and people move forward to request sent or connected, after a preview. |
+
+The `outreach_run` prompt works through a list one person at a time: a card with the profile
+link, why them and the message ready to copy; you answer sent, skip or what to change.
 
 ### Reminders and watches
 
